@@ -118,7 +118,7 @@ export const createProduct = (productData) => async (dispatch) => {
             },
             withCredentials: true
         }
-        const { data } = await axios.post(`/api/soummya//admin/product/new/${token}`,productData,config)
+        const { data } = await axios.post(`/api/soummya/admin/product/new/${token}`,productData,config)
        
         dispatch({ type: NEW_PRODUCT_SUCCESS, payload: data })
 
