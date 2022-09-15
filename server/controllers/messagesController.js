@@ -45,7 +45,6 @@ exports.sendMessages = catchAsyncError(async (req, res,next) => {
       body: "Someone Order product ...please check"
     })
     .then(() => {
-      console.log("success")
       return res.status(200).send(JSON.stringify({ success: true,message:"Send Succesfully" }));
     })
     .catch(err => {
