@@ -5,8 +5,8 @@ import axios from 'axios'
 //Add To Cart
 export const addItemsToCart = (id, quantity) => async (dispatch,getState) => {
 
-    const { data } = await axios.get(`http://localhost:8000/api/soummya/product/${id}`)
-    console.log("addtocart",data)
+    const { data } = await axios.get(`/api/soummya/product/${id}`)
+    
     dispatch({
         type: ADD_TO_CART,
         payload:{

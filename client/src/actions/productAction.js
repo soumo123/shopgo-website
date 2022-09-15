@@ -88,7 +88,7 @@ export const getProductDetailsss = (id) => async (dispatch) => {
       dispatch({ type: PRODUCT_DETAILS_REQUEST });
   
       const { data } = await axios.get(`/api/soummya/product/${id}`);
-      console.log("dataaa",data)
+
   
       dispatch({
         type: PRODUCT_DETAILS_SUCCESS,
@@ -143,7 +143,7 @@ export const getAdminProducts = () => async (dispatch) => {
         dispatch({type:ADMIN_PRODUCT_REQUEST})
 
         const {data} = await axios.get(`/api/soummya/admin/products/${token}`)
-        console.log("adminproducts",data)
+      
         dispatch({type:ADMIN_PRODUCT_SUCCESS,payload:data.products})
 
     } catch (error) {
@@ -169,7 +169,7 @@ export const newReview = (reviewData) => async (dispatch) => {
             withCredentials: true
         }
         const { data } = await axios.put(`/api/soummya/review/${token}`,reviewData,config)
-        console.log("successsssss",data.success)
+        
         dispatch({ type: NEW_REVIEW_SUCCESS, payload: data.success })
 
     } catch (error) {
@@ -188,7 +188,7 @@ export const deleteProduct = (id) => async (dispatch) => {
         const token = localStorage.getItem('token')
         dispatch({ type: DELETE_PRODUCT_REQUEST })
         const { data } = await axios.delete(`/api/soummya/admin/product/${id}/${token}`)
-        console.log("deleteadinproduct",data.success)
+      
         dispatch({ type: DELETE_PRODUCT_SUCCESS, payload: data.success })
 
     } catch (error) {
@@ -215,7 +215,7 @@ export const updateProduct = (id,productData) => async (dispatch) => {
         }
 
         const { data } = await axios.put(`/api/soummya/admin/product/${id}/${token}`,productData,config)
-        console.log("updateproductadmin",data.success)
+       
         dispatch({ type: UPDATE_PRODUCT_SUCCESS, payload: data.success })
 
     } catch (error) {
@@ -259,7 +259,7 @@ export const deleteReviews = (reviewId,productId) => async (dispatch) => {
         dispatch({type:DELETE_REVIEW_REQUEST})
 
         const {data} = await axios.delete(`/api/soummya/reviews?id=${reviewId}&productId=${productId}`)
-        console.log("allreviews",data)
+        
         dispatch({type:DELETE_REVIEW_SUCCESS,payload:data.success})
 
     } catch (error) {
@@ -305,7 +305,7 @@ export const getDealProductDetails = () => async (dispatch) => {
 
 export const updateLike = (id,likes) => async (dispatch) => {
 
-  console.log("likeaction",likes)
+  
   
     try {
         const token = localStorage.getItem('token')
@@ -319,7 +319,7 @@ export const updateLike = (id,likes) => async (dispatch) => {
         }
 
         const { data } = await axios.put(`/api/soummya/like/${id}/${token}?likes=${likes}`,config)
-        console.log("likes",data)
+       
         dispatch({ type: LIKE_PRODUCT_SUCCESS, payload: data.success })
 
     } catch (error) {
@@ -341,7 +341,7 @@ export const getallLikebleProducts = () => async (dispatch) => {
       dispatch({ type: GET_LIKE_PRODUCT_REQUEST });
   
       const { data } = await axios.get(`/api/soummya/likes`);
-      console.log("dataaa",data)
+     
   
       dispatch({
         type: GET_LIKE_PRODUCT_SUCCESS,
