@@ -111,7 +111,6 @@ console.log(order && order.success)
 
     
 
-      <Route exact path = "*"element={<NoteFound/>}/>
       </Routes>
     <Footer />
   </BrowserRouter>
