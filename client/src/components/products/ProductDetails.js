@@ -101,7 +101,7 @@ const reviewSubmitHandler = ()=>{
 
 
 const fetchProductDetails = async()=>{
-   const response = await axios.get(`http://localhost:8000/api/soummya/product/${productId}`).catch((err)=>{
+   const response = await axios.get(`/api/soummya/product/${productId}`).catch((err)=>{
     console.log("data not fetching", err)
   })
   dispatch(getProductDetails(response.data.product))
