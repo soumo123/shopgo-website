@@ -177,7 +177,7 @@ try {
         withCredentials: true
     }
 
-    const mesage = await axios.post(`/api/soummya/message`, {to:to})
+    const mesage = await axios.post(`/api/soummya/message`, {to:to},config)
    
 } catch (error) {
     console.log(error)

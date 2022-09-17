@@ -173,9 +173,10 @@ export const newReview = (reviewData) => async (dispatch) => {
         dispatch({ type: NEW_REVIEW_SUCCESS, payload: data.success })
 
     } catch (error) {
+      
         dispatch({
             type: NEW_REVIEW_FAIL,
-            payload: error.response.data.message
+            payload: error.response.data.success
         })
     }
 }
@@ -325,8 +326,9 @@ export const updateLike = (id,likes) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: LIKE_PRODUCT_FAIL,
-            payload: error.response.data.message
+            payload: error.response.data.success
         })
+        
     }
 }
 

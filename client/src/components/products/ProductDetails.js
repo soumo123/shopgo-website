@@ -31,7 +31,7 @@ const ProductDetails = () => {
   const {success:successData,error} = useSelector((state) => state.newReview)
   const { name , description , price , actualpricebydiscount,discount,size ,color,loading, images  ,stock ,numOfReviews, reviews,likes} = product
 
-  const{isLiked} = useSelector((state) => state.dealProduct)
+  const{isLiked,error:errorforLike} = useSelector((state) => state.dealProduct)
 
 
 const dispatch = useDispatch()
@@ -65,7 +65,6 @@ const increaseLike = (e)=>{
   const myForm = new FormData()
   myForm.set("like",like)
   dispatch(updateLike(productId,like))
-  alert.success("You Liked the Product")
   setInterval(() => {
     window.location.reload();
   }, 1000);
@@ -119,15 +118,23 @@ useEffect(() => {
     alert.success("Review Added succesfully ") 
     // dispatch({type:NEW_REVIEW_RESET})
   }
+  if(error==false){
+    alert.error("Please Login First")
+  }
   
-   if(isLiked)
+   if(isLiked==true)
    {
+    alert.success("You Like The Product ") 
     dispatch({type:LIKE_PRODUCT_RESET})
+   }
+
+   if(errorforLike==false){
+    alert.error("Please Login First")
    }
   // dispatch({type:NEW_REVIEW_RESET})
   // dispatch({type:NEW_REVIEW_REQUEST})
 
-}, [dispatch,successData,isLiked])
+}, [dispatch,successData,isLiked,error,errorforLike])
 
 
   return (

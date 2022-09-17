@@ -124,9 +124,10 @@ const Cart = () => {
                   <div className="order_total">
                     <div className="order_total_content text-end">
                       <div className="order_total_title">Order Total:</div>
-                      <div className="order_total_amount">₹{cartItems.map(
-                        (item) => (item.quantity * item.price).toFixed(1)
-                      )}</div>
+                      <div className="order_total_amount">₹{`₹${cartItems.reduce(
+                  (acc, item) => acc + item.quantity * item.price,
+                  0
+                )}`}</div>
                     </div>
                   </div>
                   <div className="cart_buttons">

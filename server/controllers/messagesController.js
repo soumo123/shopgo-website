@@ -10,7 +10,7 @@ const client = require('twilio')(
 
 
 exports.sendMessages = catchAsyncError(async (req, res,next) => {
-
+  
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -34,23 +34,24 @@ exports.sendMessages = catchAsyncError(async (req, res,next) => {
         if (error) {
             return await res.status(400).send(JSON.stringify({ success: false, error }));
         } else {
+          client.messages
+          .create({
+            from: process.env.TWILIO_PHONE_NUMBER,
+            to: "+919874266014",
+            body: "Someone Order product ...please check"
+          })
+          .then(() => {
+            return res.status(200).send(JSON.stringify({ success: true,message:"Send Succesfully" }));
+          })
+          .catch(err => {
+      
+            return res.status(400).send(JSON.stringify({ success: false,error:err.stack }));
+          });
+      
             return await res.status(200).send(JSON.stringify({ success: true,info,message:"Send Succesfully" }));
         }
       });
 
-    client.messages
-    .create({
-      from: process.env.TWILIO_PHONE_NUMBER,
-      to: "+919874266014",
-      body: "Someone Order product ...please check"
-    })
-    .then(() => {
-      return res.status(200).send(JSON.stringify({ success: true,message:"Send Succesfully" }));
-    })
-    .catch(err => {
-
-      return res.status(400).send(JSON.stringify({ success: false }));
-    });
 
 
 
