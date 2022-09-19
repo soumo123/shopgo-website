@@ -11,6 +11,16 @@ exports.newOrder = catchAsyncError(async (req, res, next) => {
 
     const { shippingInfo, orderItems, paymentInfo, itemsPrice, taxPrice, totalPrice, shippingPrice } = req.body
 
+    let d = new Date();
+    let delivered = d.setDate(d.getDate() + 5);
+    const deliveredAt = new Date(delivered).toISOString().substring(0, 10);;
+ 
+
+    console.log(deliveredAt)
+
+    
+
+
     const order = await Order.create({
         shippingInfo,
         orderItems,
@@ -20,7 +30,8 @@ exports.newOrder = catchAsyncError(async (req, res, next) => {
         totalPrice,
         shippingPrice,
         paidAt: Date.now(),
-        user: req.user._id
+        user: req.user._id,
+        deliveredAt
     })
     res.status(201).json({
         success: true,

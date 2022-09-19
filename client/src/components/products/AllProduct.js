@@ -12,6 +12,8 @@ import Slider from '@mui/material/Slider';
 import Metadata from '../layout/Metadata'
 
 
+
+
 const categories = [
   "Men-Shirts",
   "Men-Trousers",
@@ -45,7 +47,6 @@ const [price, setPrice] = useState([0, 20000])
   const priceHandler = (event, newPrice) => {
     setPrice(newPrice)
   }
-
   useEffect(() => {
     if (error) {
        alert.error(error)
@@ -62,6 +63,7 @@ const [price, setPrice] = useState([0, 20000])
         loading ? <Loader /> :
           <>
           <Metadata title="All Products"/>
+          
             <div className="container-fluid">
               <div className="row">
                 <div className="col-sm-2">
@@ -82,7 +84,6 @@ const [price, setPrice] = useState([0, 20000])
                   <div className="sidebar-title">
                         <p>Categories</p>
                   </div>  
-
 
                 
                   <ul className="catagory-list">
