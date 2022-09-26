@@ -22,7 +22,6 @@ import { Rating } from "@material-ui/lab";
 
 import { useAlert } from 'react-alert'
 
-import ReactImageMagnify from 'react-image-magnify';
 const ProductDetails = () => {
 
 
