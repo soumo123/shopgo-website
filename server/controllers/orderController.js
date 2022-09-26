@@ -3,6 +3,7 @@ const Product = require('../models/productModel')
 const ErrorHandler = require('../utils/errorHandler')
 const catchAsyncError = require('../middleware/catchAsyncError')
 const { findById } = require("../models/orderModel")
+const { sendMessages } = require("./messagesController")
 
 
 //create new order//
@@ -13,12 +14,7 @@ exports.newOrder = catchAsyncError(async (req, res, next) => {
 
     let d = new Date();
     let delivered = d.setDate(d.getDate() + 5);
-    const deliveredAt = new Date(delivered).toISOString().substring(0, 10);;
- 
-
-    console.log(deliveredAt)
-
-    
+    const deliveredAt = new Date(delivered).toISOString().substring(0, 10);
 
 
     const order = await Order.create({
@@ -38,6 +34,7 @@ exports.newOrder = catchAsyncError(async (req, res, next) => {
         message: 'Order created successfully',
         order
     })
+    
 })
 
 //get single order////////////////////////////////

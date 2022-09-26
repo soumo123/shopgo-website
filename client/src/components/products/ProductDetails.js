@@ -22,7 +22,7 @@ import { Rating } from "@material-ui/lab";
 
 import { useAlert } from 'react-alert'
 
-
+import ReactImageMagnify from 'react-image-magnify';
 const ProductDetails = () => {
 
 
@@ -148,12 +148,14 @@ useEffect(() => {
 						  <div className="tab-pane active" id="pic-1">
                 <Metadata title={`${product.name}`}/>
                 <Carousel>
+
                 
             {
 
               images && images.map((item,i)=>(
                 <Carousel.Item>
-                    <img key={item.url} src={item.url} alt={`${i} Slide`}/>
+                 
+                <img key={item.url} src={item.url} alt={`${i} Slide`}/>
                 </Carousel.Item>
               
               ))

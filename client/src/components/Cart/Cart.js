@@ -53,15 +53,30 @@ const Cart = () => {
 <Metadata title="Cart"/>
 
       {
-        cartItems && cartItems.length === 0 ? <div class="site">
-          <div class="sketch">
-            <div class="bee-sketch red"></div>
-            <div class="bee-sketch blue"></div>
-          </div>
+        cartItems && cartItems.length === 0 ? 
+        <div className="container">
+        <div className="row">
+          <div className="noitemcart">
 
-          <h1>
-            <small> Not Items Found</small></h1>
-        </div> : <div className="cart_section">
+          <h1>No Items in Cart</h1><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          
+          </div>
+        
+          </div>
+        
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        : <div className="cart_section">
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-10 offset-lg-1">

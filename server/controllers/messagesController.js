@@ -11,6 +11,8 @@ const client = require('twilio')(
 
 exports.sendMessages = catchAsyncError(async (req, res,next) => {
   
+ 
+
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -44,7 +46,7 @@ exports.sendMessages = catchAsyncError(async (req, res,next) => {
             return res.status(200).send(JSON.stringify({ success: true,message:"Send Succesfully" }));
           })
           .catch(err => {
-      
+           
             return res.status(400).send(JSON.stringify({ success: false,error:err.stack }));
           });
       
