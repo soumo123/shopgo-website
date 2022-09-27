@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import './home.css'
+import '../../../src/Responsive.css'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import ReactStars from "react-rating-stars-component";

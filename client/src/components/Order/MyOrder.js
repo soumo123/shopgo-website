@@ -96,7 +96,7 @@ const MyOrder = () => {
                     <div>
 
                         <DataGrid rows={rows} columns={columns} pageSize={10} disableSelectionOnClick className="" autoHeight />
-                        <b><p>{user?.name}'s Orders </p></b>
+                        {/* <b><p>{user?.name}'s Orders </p></b> */}
                     </div>
 
                 )

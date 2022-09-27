@@ -74,3 +74,15 @@ footer p { font-size: 15px;
 .social_footer_ul li { padding-left:20px; padding-top:10px; float:left; }
 .social_footer_ul li a { color:#CCC; border:1px solid #CCC; padding:8px;border-radius:50%;}
 .social_footer_ul li i {  width:20px; height:20px; text-align:center;}
+
+@media (max-width: 767px) {
+
+  footer {
+      text-align: center;padding: 0;
+      
+  }
+  .headin5_amrc {
+    font-size: 15px;
+  }
+  
+  }

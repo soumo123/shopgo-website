@@ -11,16 +11,12 @@ import BannerImg2 from '../../images/banner4.jpg'
 import BannerImg3 from '../../images/chocolate-covers.jpg'
 import BannerImg4 from '../../images/jwel-banner.jpg'
 import BannerImg5 from '../../images/back-cover-banner.jpg'
-
-
-
-
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom'
 import Carousels from "react-elastic-carousel";
 import Item from "../../Item";
 import LikeableProducts from '../products/LikeableProducts'
-
+import '../../../src/Responsive.css'
 
 const Home = () => {
   const alert = useAlert()
@@ -52,8 +48,8 @@ const Home = () => {
 
 
   const breakPoints = [
-    { width: 1, itemsToShow: 1 },
-    { width: 550, itemsToShow: 2 },
+    { width: 1, itemsToShow: 2},
+    { width: 550, itemsToShow: 2},
     { width: 768, itemsToShow: 5 },
     { width: 1200, itemsToShow: 5 }
   ];
@@ -161,12 +157,15 @@ const Home = () => {
             <div className="carao">
               <div className="container">
                 <div className="row">
-                  <div className="col-sm-12 mb-5">
+                  <div className="col-sm-12 mb-3 mt-3">
                     <h1>Todays Deal</h1>
                   </div>
 
                 </div>
               </div>
+              <div className="container-fluid">
+                <div className="row">
+                  <div className="col-sm-12">
               <Carousels breakPoints={breakPoints}>
 
                 {
@@ -192,12 +191,21 @@ const Home = () => {
                 }
 
               </Carousels>
+              </div>
+              </div>
+              </div>
 
 
 
 
             </div>
+            <div className="container-fluid">
+                <div className="row">
+                  <div className="col-sm-12">
             <LikeableProducts />
+            </div>
+            </div>
+            </div>
           </section>
         </>
 

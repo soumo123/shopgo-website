@@ -4,7 +4,7 @@ import Carousels  from "react-elastic-carousel";
 import Item from "../../Item";
 import { getallLikebleProducts } from '../../actions/productAction';
 import {Link} from 'react-router-dom'
-
+import '../../../src/Responsive.css'
 const LikeableProducts = () => {
 
   const dispatch = useDispatch()
@@ -14,10 +14,10 @@ const LikeableProducts = () => {
 
 
     const breakPoints = [
-        { width: 1, itemsToShow: 1 },
+        { width: 1, itemsToShow: 2 },
         { width: 550, itemsToShow: 2 },
-        { width: 768, itemsToShow: 4 },
-        { width: 1200, itemsToShow: 4 }
+        { width: 768, itemsToShow: 5 },
+        { width: 1200, itemsToShow: 5 }
       ];
       
       
@@ -63,7 +63,7 @@ useEffect(() => {
 <div className="carao">
 <div className="container">
   <div className="row">
-    <div className="col-sm-12 mb-5">
+    <div className="col-sm-12 mb-3 mt-3">
     <h1>Top Liked Products</h1>
     </div>
   

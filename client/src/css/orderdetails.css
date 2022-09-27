@@ -6,3 +6,15 @@
     padding: 3px 17px;
 
 }
+
+@media (max-width: 767px) {
+
+
+.detail-image, .order-details{
+    text-align: center;
+}
+
+
+
+
+    }

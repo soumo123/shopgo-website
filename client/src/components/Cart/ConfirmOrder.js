@@ -6,6 +6,7 @@ import CheckoutSteps from './CheckoutSteps'
 import { saveShippingInfo } from '../../actions/cartAction'
 import Metadata from '../layout/Metadata'
 import { createOrder,sendMail } from '../../actions/orderAction'
+import '../../css/confirmorder.css'
 
 const ConfirmOrder = () => {
   const navigate = useNavigate()

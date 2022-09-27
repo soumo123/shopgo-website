@@ -57,7 +57,7 @@ const ReviewPrpduct = () => {
                 {
                   reviews && reviews.map((review)=>(
                    
-                    <div class="col-sm-3">
+                    <div class="col-sm-4 col-lg-3">
                       <div class="cad">
                         
                         <div class="">

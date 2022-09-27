@@ -305,3 +305,38 @@ button{
 }
 
 
+
+
+@media (max-width: 767px) {
+
+  /* .sidebar{
+      height: 100%;
+  } */
+  .carousel-item img{
+      object-fit: contain !important;
+  }
+
+.details-box{
+  text-align: center
+}
+.description-box{
+  margin: 20px;
+}
+.like {
+ margin-left: 0;
+}
+
+
+.rate {
+  
+  width: 40%;
+  margin: 15px auto 15px;
+}
+.cad{
+  margin-bottom: 20px;
+}
+.add-to-cart{
+  margin-top:20px
+}
+  
+  }

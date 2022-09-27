@@ -48,7 +48,7 @@ function App() {
   const[stripeApiKey,setStripeApiKey] = useState("")
 const token = localStorage.getItem('token')
   async function getStripeApiKey(){
-    const {data} = await axios.get(`/api/soummya/stripeApiKey/${token}`)
+    const {data} = await axios.get(`http://localhost:8000/api/soummya/stripeApiKey/${token}`)
     setStripeApiKey(data.stripeApiKey)
   }
   

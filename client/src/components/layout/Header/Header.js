@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import shopgo from '../../../images/shopgo.png'
 import UserOptions from './UserOptions';
 import '../../../css/header.css'
-
+import '../../../Responsive.css'
 
 const Header = () => {
 
