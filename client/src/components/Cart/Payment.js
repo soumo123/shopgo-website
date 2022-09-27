@@ -68,7 +68,7 @@ const order = {
         withCredentials: true
     }
 
-    const { data } = await axios.post(`http://localhost:8000/api/soummya/payment/process/${token}`, paymentData,config)
+    const { data } = await axios.post(`/api/soummya/payment/process/${token}`, paymentData,config)
     
     const client_secret = data.client_secret;
 
