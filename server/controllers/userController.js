@@ -5,6 +5,9 @@ const sendToken = require('../utils/jwtToke')
 const sendEmail = require('../utils/sendEmail')
 const crypto = require('crypto')
 const cloudinary = require('cloudinary')
+const { find } = require('../models/userModels')
+const nodemailer = require('nodemailer');
+
 //user registration//
 
 exports.registerUser = catchAsyncError(async (req, res, next) => {
@@ -15,9 +18,14 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
         crop: "scale",
       });
 
-    const { name, email, password } = req.body
+    const { name, email, password,number } = req.body
+    // const isEmail = await User.find({email:email})
+    // if(isEmail){
+    //     return next(new ErrorHandler('Email Already Present', 400))
+
+    // }
     const user = await User.create({
-        name, email, password,
+        name, email, password,number,
         avatar: {
             public_id: myCloud.public_id,
             url:myCloud.secure_url
@@ -25,7 +33,6 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
     })
     sendToken(user, 200, res)
 })
-
 
 //Login User//
 
@@ -59,6 +66,7 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
 })
 
 //logout user// 
+
 
 exports.logout = catchAsyncError(async (req, res, next) => {
 
@@ -310,4 +318,85 @@ await cloudinary.v2.uploader.destroy(imageId)
         success: true,
         message: `User deleted successfully`
     })
+})
+
+
+
+
+exports.OtpRequest = catchAsyncError(async (req, res, next) => {
+
+    try {
+        const {number } = req.body
+        const user = await User.findOne({number:number})    
+        const otp = Math.floor(1000 + Math.random() * 9000);
+    
+        user.otp = otp
+        await user.save()
+
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: process.env.NODEMAILER_EMAIL,
+              pass: process.env.NODEMAILER_PASSWORD
+            }
+          });
+          
+          const mailOptions = {
+            from: process.env.NODEMAILER_EMAIL,
+            to: user.email,
+            envelope: {
+              from: process.env.NODEMAILER_EMAIL,
+              to: user.email
+            },
+            subject: "shopgo.com",
+            html: `<b><p>Your Otp is - ${otp}</p></b>`
+          };
+
+          transporter.sendMail(mailOptions, async function(error, info){
+            if (error) {
+                return await res.status(400).send(JSON.stringify({ success: false, error }));
+
+            } else {
+                return res.status(200).send({message:"Otp Send Succesfully", success:true})
+            }
+          });
+    
+        
+    } catch (error) {
+        return res.status(400).send({message:"Otp Not Send",error:error.stack, success:false})
+
+        
+    }
+
+
+
+   
+})
+
+
+
+exports.VerifyOtp = catchAsyncError(async (req, res, next) => {
+
+    try {
+        const {otp} = req.body
+        const user = await User.findOne({otp:otp})  
+        console.log("user",user)  
+        
+        if(otp==user.otp){
+            sendToken(user,200,res)
+            // return res.status(200).send({message:"Login Succesfully", success:true})
+        }else{
+            return  res.status(400).send(JSON.stringify({ success: false }));
+
+        }
+
+    } catch (error) {
+        return res.status(400).send({message:"Wrong OTP",error:error.stack, success:false})
+
+        
+    }
+
+
+
+   
 })

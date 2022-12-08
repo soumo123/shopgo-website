@@ -40,6 +40,7 @@ import ProductReviews from './components/admin/ProductReviews';
 import CodPayment from './components/Cart/CodPayment';
 import NoteFound from './components/layout/Not-Found/NoteFound';
 import Contact from './components/layout/Contact-us/Contact';
+import OtpVerification from './components/users/OtpVerification';
 
 
 function App() {
@@ -80,6 +81,8 @@ console.log(order && order.success)
         <Route exact path="/search" element={<SearchPrpduct/>} />
         <Route exact path="/account" element={<ProtectedRoute Component={Profile}/>} />
        <Route exact path="/login" element={<Authentication />} />
+       <Route exact path="/otp/verification" element={<OtpVerification />} />
+
        {isAuthenticated && <Route exact path="/me/update" element={<UpdateProfile />} />}
        {isAuthenticated && <Route exact path="/password/update" element={<UpdatePassword />} />}
        <Route exact path="/password/forgot" element={<ForgotPassword />}/>

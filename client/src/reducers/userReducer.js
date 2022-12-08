@@ -35,7 +35,13 @@ import {
     DELETE_USER_SUCCESS,
     DELETE_USER_RESET,
     DELETE_USER_FAIL,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    OTP_SUCCESS,
+    OTP_FAIL,
+    OTP_REQUEST,
+    VERIFY_REQUEST,
+    VERIFY_SUCCESS,
+    VERIFY_FAIL
 
 
 } from '../constants/userConstant'
@@ -45,7 +51,8 @@ export const userReducer = (state = { user: {} }, action) => {
     switch (action.type) {
         case LOGIN_REQUEST:
         case REGISTER_USER_REQUEST:
-        case  LOAD_USER_REQUEST:
+        case LOAD_USER_REQUEST:
+        case OTP_REQUEST:
             return {
                 loading: true,
                 isAuthenticated: false
@@ -67,10 +74,18 @@ export const userReducer = (state = { user: {} }, action) => {
                     user: action.payload
                 }
 
-
-
-
-
+            case OTP_SUCCESS:
+                return {
+                ...state,
+                loading: false,
+                user: action.payload
+            }    
+            case OTP_FAIL:
+                return {
+                ...state,
+                success: false,
+                error: action.payload
+            }    
 
             case LOAD_USER_FAIL:
                 return {
@@ -260,11 +275,6 @@ export const allUsersReducer = (state = {users:[]}, action) => {
 
 
 
-
-
-
-
-
 export const userDetailsReducer = (state = {user:{}}, action) => {
 
     switch (action.type) {
@@ -284,6 +294,43 @@ export const userDetailsReducer = (state = {user:{}}, action) => {
                 ...state,
                 loading: false,
                 error: action.payload
+            }
+            case CLEAR_ERRORS:
+                return {
+                    ...state,
+                    error: null
+                }
+
+        
+        default:
+            return state
+    }
+}
+
+
+
+
+
+
+export const verifyOtpReducer = (state = {user:{}}, action) => {
+
+    switch (action.type) {
+        case VERIFY_REQUEST:
+            return {
+                ...state,
+                loading:true
+            }
+        case VERIFY_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                user: action.payload
+            }
+        case VERIFY_FAIL:
+            return {
+                ...state,
+                loading: false,
+                user:action.payload 
             }
             case CLEAR_ERRORS:
                 return {

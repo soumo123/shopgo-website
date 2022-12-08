@@ -71,4 +71,16 @@ export const LOGOUT_FAIL = "LOGOUT_FAIL";
 
 
 
+
+export const OTP_REQUEST = "OTP_REQUEST";
+export const OTP_SUCCESS = "OTP_SUCCESS";
+export const OTP_FAIL = "OTP_FAIL";
+
+
+export const VERIFY_REQUEST = "VERIFY_REQUEST";
+export const VERIFY_SUCCESS = "VERIFY_SUCCESS";
+export const VERIFY_FAIL = "VERIFY_FAIL";
+
+
+
 export const CLEAR_ERRORS = "CLEAR_ERRORS";

@@ -24,10 +24,10 @@ const[loginEmail,setLoginEmail] = useState("")
 const[loginPassword,setLoginPassword] = useState("")
 
 const[user,setUser] = useState({
-  name:"",email:"",password:""
+  name:"",email:"",password:"", number:""
 })
 
-const { name,email,password} = user
+const { name,email,password,number} = user
 const [avatar,setAvatar] = useState()
 const [avatarPreview,setAvatarPreview] = useState("/profile.png")
 
@@ -44,6 +44,7 @@ const registerSubmit = (e)=>{
   myForm.set("name",name);
   myForm.set("email",email);
   myForm.set("password",password);
+  myForm.set("number",number);
   myForm.set("avatar",avatar);
   dispatch(register(myForm));
  
@@ -145,6 +146,16 @@ const switchTabs = (e,tab)=>{
                 </div>
                 
                 <input type="submit" value="Login" className="loginBtn" />
+               <div className="row">
+               <div className="col-lg-12 text-center">
+                {/* <div className="phoneiocn">
+                <i class="fa fa-mobile" aria-hidden="true"></i>
+                </div> */}
+               <Link to="/otp/verification"className="btn btn-primary btn-sm otpbtn">
+                Login With Number</Link>
+                    </div>
+               </div>
+                
               </form>
               
 
@@ -176,6 +187,25 @@ const switchTabs = (e,tab)=>{
                     onChange={registerDataChange}
                   />
                 </div>
+
+                <div className="signUpName">
+                <i className="fa fa-user" aria-hidden="true"></i>
+                  <input
+                    type="number"
+                    placeholder="Phone Number"
+                    required
+                    name="number"
+                    value={number}
+                    onChange={registerDataChange}
+                  />
+                </div>
+
+
+
+
+
+
+
                 <div className="signUpEmail">
                 <i className="fa fa-envelope-o" aria-hidden="true"></i>
                   <input

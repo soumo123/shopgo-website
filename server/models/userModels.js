@@ -19,11 +19,21 @@ const userSchema = new mongoose.Schema({
         unique: true,
         validate: [validator.isEmail, "please enter valid email"]
     },
+    number: {
+        type: Number,
+        required: [true, "Please enter your Phone Number"],
+        unique: true,
+        maxLength: [10, "Number cannot exceed 10"],
+    },
     password: {
         type: String,
         required: [true, "Please enter your password"],
         minLength: [4, "password must be grater 4 characters"],
         select: false
+    },
+
+    otp:{
+        type:Number
     },
 
     avatar: {

@@ -32,7 +32,13 @@ import { LOGIN_SUCCESS,
     DELETE_USER_SUCCESS,
     DELETE_USER_RESET,
     DELETE_USER_FAIL,
-    CLEAR_ERRORS } from '../constants/userConstant'
+    CLEAR_ERRORS, 
+    OTP_REQUEST,
+    OTP_SUCCESS,
+    OTP_FAIL,
+    VERIFY_REQUEST,
+    VERIFY_SUCCESS,
+    VERIFY_FAIL} from '../constants/userConstant'
 
 
 import axios from 'axios'
@@ -50,7 +56,7 @@ export const login = (email, password) => async (dispatch) => {
             withCredentials: true
         }
         const { data } = await axios.post("/api/soummya/login", { email, password },config)
-        const profileData = data.user
+        const profileData = data
        
         localStorage.setItem("token",data.token)
         localStorage.setItem("profile", JSON.stringify(profileData))
@@ -266,6 +272,68 @@ export const deleteUser = (id) => async (dispatch) => {
     }
 
 }
+
+
+
+
+
+
+
+
+//get otp
+
+export const getOtpFunction = (number) => async (dispatch) => {
+    try {
+        dispatch({ type: OTP_REQUEST })
+        const config = {
+            headers: {
+                'Content-Type': "multipart/form-data"
+            }
+        }
+        const link  ='/api/soummya/generate/otp'
+        const { data } = await axios.put(link, number, config)
+        dispatch({ type: OTP_SUCCESS, payload: data.user })
+        
+    } catch (error) {
+        dispatch({ type: OTP_FAIL, payload: error.response.data.message })
+    }
+
+
+}
+
+
+
+//verify Otp Function
+
+
+export const verifyOtpFunction = (otp) => async (dispatch) => {
+    try {
+        dispatch({ type: VERIFY_REQUEST })
+        const config = {
+            headers: {
+                'Content-Type': "application/json",
+                // 'Accept':"/"
+            },
+            withCredentials: true
+        }
+        const link  ='/api/soummya/verify/otp'
+        const { data } = await axios.post(link, otp, config)
+        const profileData = data.user
+       
+        localStorage.setItem("token",data.token)
+        localStorage.setItem("profile", JSON.stringify(profileData))
+        dispatch({ type: VERIFY_SUCCESS, payload: data })
+        
+    } catch (error) {
+        dispatch({ type: VERIFY_FAIL, payload: error.response.data })
+    }
+
+
+}
+
+
+
+
 
 
 

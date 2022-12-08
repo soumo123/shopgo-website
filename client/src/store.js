@@ -2,7 +2,7 @@ import {createStore,combineReducers,applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import {productDetailsReducer,productReducer,newReviewReducer,newProductReducer,deleteProductAdminReducer,productDetailsReducers,productReviewsReducers,reviewReducer,dealProductReducers, likebleProductReducers} from './reducers/productReducer'
-import {userReducer,profileReducer,forgotPasswordReducer,allUsersReducer,userDetailsReducer} from './reducers/userReducer'
+import {userReducer,profileReducer,forgotPasswordReducer,allUsersReducer,userDetailsReducer, verifyOtpReducer} from './reducers/userReducer'
 import {cartReducer} from './reducers/cartReducer'
 import {globalReducer} from './reducers/globalReducer'
 import { newOrderReducer,myOrderReducer,orderDetailsReducer,allOrdersReducer,orderReducer } from './reducers/orderReducer'
@@ -28,7 +28,8 @@ const reducer = combineReducers({
     review:reviewReducer,
     dealProduct:dealProductReducers,
     likeableProducts:likebleProductReducers,
-    globalReducer:globalReducer
+    globalReducer:globalReducer,
+    verifyOtp:verifyOtpReducer
 })
 
 let initialState ={

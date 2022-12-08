@@ -1,13 +1,18 @@
 const express = require('express')
 const router = express.Router()
 
-const {registerUser,loginUser,forgotPassword,resetPassword,logout,getUserDetails,updatePassword,updateProfile,getAllUsers,getSingleUser,updateUserRole,deleteUser} = require('../controllers/userController')
+const {registerUser,loginUser,forgotPassword,resetPassword,logout,getUserDetails,updatePassword,updateProfile,getAllUsers,getSingleUser,updateUserRole,deleteUser,OtpRequest, VerifyOtp} = require('../controllers/userController')
 const {sendMessages}  = require('../controllers/messagesController')
 const {isAuthenticatedUser,authorizeRoles} = require('../middleware/auth')
 
 router.route('/register').post(registerUser)
 
 router.route('/login').post(loginUser)
+
+router.route('/generate/otp').put(OtpRequest)
+
+router.route('/verify/otp').post(VerifyOtp)
+
 
 router.route('/password/forgot').post(forgotPassword)
 

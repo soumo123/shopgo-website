@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
-    "dev":"nodemon server/server.js",
+    "dev": "nodemon server/server.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
@@ -37,6 +37,7 @@
     "mongoose": "^5.13.14",
     "nodemailer": "^6.7.8",
     "nodemon": "^2.0.19",
+    "otp-generator": "^4.0.0",
     "stripe": "^10.2.0",
     "validator": "^13.7.0"
   },
